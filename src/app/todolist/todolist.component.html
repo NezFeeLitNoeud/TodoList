@@ -1,0 +1,36 @@
+<input type="text" class="item-add" placeholder="Tu dois faire quoi ?" [(ngModel)]="todoTitle" (keyup.enter)="addTodo()" >
+<input type="text" class="desc-add" placeholder="Description" [(ngModel)]="todoDesc" (keyup.enter)="addTodo()" >
+
+
+<div class="todo-item" *ngFor="let todo of todos">
+	<div class="todo-item-left">
+
+		<input type="checkbox" [(ngModel)]="todo.completed">
+		<div  
+		*ngIf="!todo.editing; else editingTodo" 
+		class="todo-item-label" 
+		[ngClass]="{ 'completed' : todo.completed }" 
+		(dblclick)="editTodo(todo)"
+		(click)="showDesc(todo)">
+			{{ todo.title }}
+		</div>
+		<div 
+		[ngClass]="{ 'hidden' : !todo.show }" 
+		class="todo-item-desc">
+			{{ todo.description }}
+		</div>
+
+		<ng-template #editingTodo>
+			<input id="edit" type="text" 
+			[(ngModel)]="todo.title" 
+			(blur)="doneEdit(todo)" 
+			(keyup.enter)="doneEdit(todo)"  
+			(keyup.esc)="cancelEdit(todo)"
+			autofocus>
+		</ng-template>
+
+	</div>
+	<div class="remove-item" (click)="deleteTodo(todo.id)">
+		&times;
+	</div>
+</div>

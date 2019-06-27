@@ -1,0 +1,76 @@
+.item-add {
+	border:1px lightgrey solid;
+	width: 40%;
+	height: 30px;
+	margin-left: 30%;
+	border-radius: 50px;
+	padding: 10px;
+	font-size: 15px;
+	text-align: center;
+}
+
+.desc-add {
+	border:1px lightgrey solid;
+	width: 35%;
+	height: 25px;
+	margin-left: 33%;
+	border-radius: 50px;
+	font-size: 10px;
+	text-align: center;
+}
+
+.todo-item {
+	border-bottom: 1px lightgrey solid;
+	width: 50%;
+	padding-bottom: 10px;
+	margin: 2% auto;
+}
+
+.todo-item-left {
+
+	/*border: 1px red solid;*/
+	/*margin-top: 10%;*/
+	height: 50px;
+	/*border: 1px blue solid;*/
+}
+
+.todo-item-label {
+	/*border: 1px blue solid;*/
+	font-size: 20px;
+	font-family: "Roboto Mono", monospace;
+	font-weight: bold;
+	padding-left: 10px;
+	color: grey;
+	display: inline;
+}
+
+.todo-item-desc {
+	/*border: 1px red solid;*/
+	position: absolute;
+	color: grey;
+	font-size: 15px;
+}
+.remove-item {
+	margin-top: -6%;
+	margin-left: 90%;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+}
+
+#edit {
+	font-family: "Roboto Mono", monospace;
+	font-size: 20px;
+	width: 50%;
+	height: 50px;
+	font-weight: bold;
+	color: grey;
+}
+.completed {
+	text-decoration: line-through;
+}
+
+.hidden {
+	display: none;
+}
