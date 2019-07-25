@@ -1,6 +1,11 @@
+<header>
+	<h1>TODO - OOM</h1>
+</header>
+
+<div class="inputs">
 <input type="text" class="item-add" placeholder="Tu dois faire quoi ?" [(ngModel)]="todoTitle" (keyup.enter)="addTodo()" >
 <input type="text" class="desc-add" placeholder="Description" [(ngModel)]="todoDesc" (keyup.enter)="addTodo()" >
-
+</div>
 
 <div class="todo-item" *ngFor="let todo of todos">
 	<div class="todo-item-left">
@@ -11,8 +16,9 @@
 		class="todo-item-label" 
 		[ngClass]="{ 'completed' : todo.completed }" 
 		(dblclick)="editTodo(todo)"
-		(click)="showDesc(todo)">
-			{{ todo.title }}
+		(click)="show(todo)">
+			{{ todo.title }} // 
+		
 		</div>
 		<div 
 		[ngClass]="{ 'hidden' : !todo.show }" 
@@ -34,3 +40,12 @@
 		&times;
 	</div>
 </div>
+
+<!-- 
+<button (click)="set()">Set</button>
+<button (click)="del()">Del</button> -->
+<button (click)="get()">Get</button>
+
+<p id="dem" *ngFor="let cook of allCookies | keyvalue ">
+	{{ cook.key }}
+</p>

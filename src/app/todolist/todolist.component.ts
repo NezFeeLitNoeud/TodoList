@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-todolist',
@@ -11,41 +12,43 @@ todoTitle: string;
 todoDesc: string;
 idForTodo: number;
 beforeEditCache: string;
+// cook: number;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
+	// this.cook = 0;
+ //  	const cookieExists: boolean = this.cookieService.check(this.cook);
+ //  	console.log(cookieExists)
+ //  	this.cook++;
+ //  	console.log(this.cook)
 
+  	const allCookies: {} = this.cookieService.getAll();
+  	console.log(allCookies)
+	console.log(allCookies)
+
+	// document.getElementById("dem").innerHTML = allCookies.keys;
   	this.beforeEditCache = "";
-  	this.idForTodo = 4;
+  	this.idForTodo = 1;
   	this.todoTitle = "";
   	this.todoDesc = "";
   	this.todos = [
-  	{
-  		'id' : 1,
-  		'title': "Finish Angular",
-  		'completed': false,
-  		'editing': false,
-  		'description': "description 1",
-  		'show': false
-  	},
-  	{
-  		'id' : 2,
-  		'title': "One more task",
-  		'completed': false,
-  		'editing': false,
-  		'description': "description 2",
-  		'show': false
-  	},
-  	{
-  		'id' : 3,
-  		'title': "Last task",
-  		'completed': false,
-  		'editing': false,
-  		'description': "description 3",
-  		'show': false
-  	},
-  	];
+		// {	
+	 //  		id: this.idForTodo,
+	 //  		title: this.todoTitle,
+	 //  		completed: false,
+	 //  		editing: false,
+	 //  		description: this.todoDesc,
+	 //  		show: false
+	 //  	}
+		];
+console.log(this.todos)
+		// if(cookieExists === true){
+		// 	console.log("Cookies est true")
+		// } else {
+		// 	console.log("Cookies est false")
+		// }
+
   }
 
 addTodo(): void {
@@ -54,6 +57,7 @@ addTodo(): void {
 		return;
 	}
 
+	this.setCookie();
 	this.todos.push({
 		id: this.idForTodo,
 		title: this.todoTitle,
@@ -66,6 +70,8 @@ addTodo(): void {
 	this.todoTitle = '';
 	this.todoDesc = '';
 	this.idForTodo++;
+
+	console.log(this.todos)
 }
 
 deleteTodo(id: number): void {
@@ -103,11 +109,37 @@ showDesc(todo: Todo): void {
 		todo.show = false;
 	}
 }
+
+get(todo: Todo){
+	// Permet de récuperer la valeur du cookie 
+	this.cookieValue = this.cookieService.get(this.idForTodo - 1);
+  	console.log(this.idForTodo - 1)
+  	console.log("this cookie value : " + this.cookieValue)
+
+ //  	const allCookies: {} = this.cookieService.getAll();
+ //  	console.log(allCookies)
+	// console.log("get all cookie [this] : " + allCookies[this.idForTodo - 1])
+
+
+}
+
+setCookie(todo: Todo){
+	this.cookieService.set(this.idForTodo, this.todoTitle);
+	// this.cookieService.set(this.todoTitle, this.todoDesc);
+	// let cookieValue = this.cookieService.get(this.idForTodo)
+}
+
+del(){
+	alert(this.cookieService.deleteAll('test'));
+}
+
 }
 
 interface Todo {
-	id: numer,
+	id: number,
 	title: string,
 	completed: boolean,
-	editing: boolean
+	editing: boolean,
+	description: string,
+	show: boolean
 }
