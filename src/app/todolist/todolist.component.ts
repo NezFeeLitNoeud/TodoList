@@ -23,9 +23,6 @@ beforeEditCache: string;
  //  	this.cook++;
  //  	console.log(this.cook)
 
-  	const allCookies: {} = this.cookieService.getAll();
-  	console.log(allCookies)
-	console.log(allCookies)
 
 	// document.getElementById("dem").innerHTML = allCookies.keys;
   	this.beforeEditCache = "";
@@ -57,7 +54,6 @@ addTodo(): void {
 		return;
 	}
 
-	this.setCookie();
 	this.todos.push({
 		id: this.idForTodo,
 		title: this.todoTitle,
@@ -108,29 +104,6 @@ showDesc(todo: Todo): void {
 	} else if( todo.show === true){
 		todo.show = false;
 	}
-}
-
-get(todo: Todo){
-	// Permet de récuperer la valeur du cookie 
-	this.cookieValue = this.cookieService.get(this.idForTodo - 1);
-  	console.log(this.idForTodo - 1)
-  	console.log("this cookie value : " + this.cookieValue)
-
- //  	const allCookies: {} = this.cookieService.getAll();
- //  	console.log(allCookies)
-	// console.log("get all cookie [this] : " + allCookies[this.idForTodo - 1])
-
-
-}
-
-setCookie(todo: Todo){
-	this.cookieService.set(this.idForTodo, this.todoTitle);
-	// this.cookieService.set(this.todoTitle, this.todoDesc);
-	// let cookieValue = this.cookieService.get(this.idForTodo)
-}
-
-del(){
-	alert(this.cookieService.deleteAll('test'));
 }
 
 }
